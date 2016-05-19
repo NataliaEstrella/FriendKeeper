@@ -6,6 +6,8 @@
 target 'FriendKeeper' do
 
 pod 'LGSideMenuController', '~> 1.0.0'
+pod 'DGActivityIndicatorView'
+
 
 end
 

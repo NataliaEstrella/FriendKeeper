@@ -1,10 +1,13 @@
 PODS:
+  - DGActivityIndicatorView (2.0)
   - LGSideMenuController (1.0.10)
 
 DEPENDENCIES:
+  - DGActivityIndicatorView
   - LGSideMenuController (~> 1.0.0)
 
 SPEC CHECKSUMS:
+  DGActivityIndicatorView: 52875b025a6ccf6a431a905285c12e2bb95eb559
   LGSideMenuController: 8682bdbd0008c1acfbce95eaf96cc3657bca5f95
 
 COCOAPODS: 0.39.0

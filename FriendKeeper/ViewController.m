@@ -12,6 +12,8 @@
 #import "ViewController.h"
 #import "VKSideMenu.h"
 #import "ContactManager.h"
+#import "DGActivityIndicatorView.h"
+
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
@@ -19,7 +21,10 @@
 
 @property (nonatomic, strong) VKSideMenu *menuLeft;
 @property (nonatomic) NSMutableArray *testArray;
+@property (nonatomic) DGActivityIndicatorView *loadingView;
+
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
+
 
 
 
@@ -31,7 +36,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self getContacts];
-//    self.testArray = @[@"meow", @"dog", @"party"];
+    [self startLoading];
     self.testArray = [[NSMutableArray alloc] init];
     
     
@@ -50,9 +55,9 @@
     self.avatar.layer.borderWidth   = 5.;
 }
 
--(IBAction)buttonMenuLeft:(id)sender
-{
+-(IBAction)buttonMenuLeft:(id)sender {
     [self.menuLeft show];
+    [self stopLoading];
 }
 
 
@@ -67,8 +72,7 @@
     return self.testArray.count;
 }
 
--(VKSideMenuItem *)sideMenu:(VKSideMenu *)sideMenu itemForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(VKSideMenuItem *)sideMenu:(VKSideMenu *)sideMenu itemForRowAtIndexPath:(NSIndexPath *)indexPath {
     // This solution is provided for DEMO propose only
     // It's beter to store all items in separate arrays like you do it in your UITableView's. Right?
     VKSideMenuItem *item = [VKSideMenuItem new];
@@ -82,8 +86,7 @@
 
 #pragma mark - VKSideMenuDelegate
 
--(void)sideMenu:(VKSideMenu *)sideMenu didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+-(void)sideMenu:(VKSideMenu *)sideMenu didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"SideMenu didSelectRow: %@", indexPath);
 }
@@ -147,5 +150,33 @@ CNContactStore *store = [[CNContactStore alloc] init];
     }
 }];
 }
+
+- (void)startLoading {
+    
+    DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeTriangleSkewSpin tintColor:[UIColor colorWithRed:105.0/255.0 green:105.0/255.0 blue:105.0/255.0 alpha:1.0]];
+    CGFloat width = self.view.bounds.size.width / 20.0f;
+    CGFloat height = self.view.bounds.size.height / 20.0f;
+    
+    activityIndicatorView.frame = CGRectMake(0, 0, width, height);
+    [self.view addSubview:activityIndicatorView];
+    [activityIndicatorView startAnimating];
+    [activityIndicatorView setCenter:self.view.center];
+    
+    self.loadingView = activityIndicatorView;
+    
+//  self.collectionView.alpha = 0;
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self stopLoading];
+    });
+}
+
+- (void)stopLoading {
+
+    [self.loadingView stopAnimating];
+    self.loadingView.alpha = 0;
+}
+
+
 
 @end
