@@ -11,14 +11,17 @@
 
 #import "ViewController.h"
 #import "VKSideMenu.h"
+#import "ContactManager.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
 @interface ViewController () <VKSideMenuDelegate, VKSideMenuDataSource>
 
 @property (nonatomic, strong) VKSideMenu *menuLeft;
-@property (nonatomic) NSArray *testArray;
+@property (nonatomic) NSMutableArray *testArray;
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
+
+
 
 
 @end
@@ -28,7 +31,10 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self getContacts];
-    self.testArray = @[@"meow", @"dog", @"party"];
+//    self.testArray = @[@"meow", @"dog", @"party"];
+    self.testArray = [[NSMutableArray alloc] init];
+    
+    
     // Init default left-side menu with custom width
     self.menuLeft = [[VKSideMenu alloc] initWithWidth:220 andDirection:VKSideMenuDirectionLeftToRight];
     self.menuLeft.dataSource = self;
@@ -67,7 +73,9 @@
     // It's beter to store all items in separate arrays like you do it in your UITableView's. Right?
     VKSideMenuItem *item = [VKSideMenuItem new];
     
-    item.title = self.testArray[indexPath.row];
+    ContactManager *contactObject = self.testArray[indexPath.row];
+    
+    item.title = contactObject.name;
     
     return item;
 }
@@ -91,6 +99,8 @@
 }
 
 
+#pragma mark - Contact API Manager 
+//To be placed eventually in its own manager file
 
 -(void)getContacts {
     
@@ -127,8 +137,14 @@ CNContactStore *store = [[CNContactStore alloc] init];
     CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
     
     for (CNContact *contact in contacts) {
+        ContactManager *object = [[ContactManager alloc] init];
+        
         NSString *string = [formatter stringFromContact:contact];
+        object.name = string;
+        NSLog(@"object.name = %@", object.name);
         NSLog(@"contact = %@", string);
+        
+        [self.testArray addObject:object];
     }
 }];
 }
