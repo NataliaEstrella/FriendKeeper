@@ -6,6 +6,9 @@
 //  Copyright © 2016 Natalia Estrella. All rights reserved.
 //
 
+@import Contacts;
+@import AddressBook;
+
 #import "ViewController.h"
 #import "VKSideMenu.h"
 
@@ -25,6 +28,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    [self getContacts];
     // Do any additional setup after loading the view, typically from a nib.
     
     // Init default left-side menu with custom width
@@ -158,6 +162,47 @@
             return nil;
             break;
     }
+}
+
+-(void)getContacts {
+    
+CNContactStore *store = [[CNContactStore alloc] init];
+[store requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+    
+    // make sure the user granted us access
+    
+    if (!granted) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // user didn't grant access;
+            // so, again, tell user here why app needs permissions in order  to do it's job;
+            // this is dispatched to the main queue because this request could be running on background thread
+        });
+        return;
+    }
+    
+    // build array of contacts
+    
+    NSMutableArray *contacts = [NSMutableArray array];
+    
+    NSError *fetchError;
+    CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:@[CNContactIdentifierKey, [CNContactFormatter descriptorForRequiredKeysForStyle:CNContactFormatterStyleFullName]]];
+    
+    BOOL success = [store enumerateContactsWithFetchRequest:request error:&fetchError usingBlock:^(CNContact *contact, BOOL *stop) {
+        [contacts addObject:contact];
+    }];
+    if (!success) {
+        NSLog(@"error = %@", fetchError);
+    }
+    
+    // you can now do something with the list of contacts, for example, to show the names
+    
+    CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
+    
+    for (CNContact *contact in contacts) {
+        NSString *string = [formatter stringFromContact:contact];
+        NSLog(@"contact = %@", string);
+    }
+}];
 }
 
 @end
