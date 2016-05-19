@@ -17,8 +17,7 @@
 @interface ViewController () <VKSideMenuDelegate, VKSideMenuDataSource>
 
 @property (nonatomic, strong) VKSideMenu *menuLeft;
-//@property (nonatomic, strong) VKSideMenu *menuRight;
-
+@property (nonatomic) NSArray *testArray;
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
 
 
@@ -29,8 +28,7 @@
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self getContacts];
-    // Do any additional setup after loading the view, typically from a nib.
-    
+    self.testArray = @[@"meow", @"dog", @"party"];
     // Init default left-side menu with custom width
     self.menuLeft = [[VKSideMenu alloc] initWithWidth:220 andDirection:VKSideMenuDirectionLeftToRight];
     self.menuLeft.dataSource = self;
@@ -54,17 +52,13 @@
 
 #pragma mark - VKSideMenuDataSource
 
--(NSInteger)numberOfSectionsInSideMenu:(VKSideMenu *)sideMenu
-{
-    return sideMenu == self.menuLeft ? 1 : 2;
+-(NSInteger)numberOfSectionsInSideMenu:(VKSideMenu *)sideMenu {
+    return 1;
 }
 
--(NSInteger)sideMenu:(VKSideMenu *)sideMenu numberOfRowsInSection:(NSInteger)section
-{
-    if (sideMenu == self.menuLeft)
-        return 4;
+-(NSInteger)sideMenu:(VKSideMenu *)sideMenu numberOfRowsInSection:(NSInteger)section {
     
-    return section == 0 ? 1 : 2;
+    return self.testArray.count;
 }
 
 -(VKSideMenuItem *)sideMenu:(VKSideMenu *)sideMenu itemForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,54 +67,7 @@
     // It's beter to store all items in separate arrays like you do it in your UITableView's. Right?
     VKSideMenuItem *item = [VKSideMenuItem new];
     
-    if (sideMenu == self.menuLeft) // All LEFT menu items
-    {
-        switch (indexPath.row)
-        {
-            case 0:
-                item.title = @"Profile";
-                item.icon  = [UIImage imageNamed:@"ic_option_1"];
-                break;
-                
-            case 1:
-                item.title = @"Messages";
-                item.icon  = [UIImage imageNamed:@"ic_option_2"];
-                break;
-                
-            case 2:
-                item.title = @"Cart";
-                item.icon  = [UIImage imageNamed:@"ic_option_3"];
-                break;
-                
-            case 3:
-                item.title = @"Settings";
-                item.icon  = [UIImage imageNamed:@"ic_option_4"];
-                break;
-                
-            default:
-                break;
-        }
-    }
-    else if (indexPath.section == 0) // RIGHT menu first section items
-    {
-        item.title = @"Login";
-        item.icon  = [UIImage imageNamed:@"ic_login"];
-    }
-    else // RIGHT menu second section items
-    {
-        switch (indexPath.row)
-        {
-            case 0:
-                item.title = @"Like";
-                break;
-                
-            case 1:
-                item.title = @"Share";
-                break;
-            default:
-                break;
-        }
-    }
+    item.title = self.testArray[indexPath.row];
     
     return item;
 }
@@ -143,26 +90,7 @@
     NSLog(@"%@ VKSideMenue did hide", sideMenu == self.menuLeft ? @"LEFT" : @"RIGHT");
 }
 
--(NSString *)sideMenu:(VKSideMenu *)sideMenu titleForHeaderInSection:(NSInteger)section
-{
-    if (sideMenu == self.menuLeft)
-        return nil;
-    
-    switch (section)
-    {
-        case 0:
-            return @"Profile";
-            break;
-            
-        case 1:
-            return @"Actions";
-            break;
-            
-        default:
-            return nil;
-            break;
-    }
-}
+
 
 -(void)getContacts {
     
