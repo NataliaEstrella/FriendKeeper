@@ -13,7 +13,7 @@
 		516F58DE1CED2E6E00407C98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516F58DC1CED2E6E00407C98 /* Main.storyboard */; };
 		516F58E01CED2E6E00407C98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 516F58DF1CED2E6E00407C98 /* Assets.xcassets */; };
 		516F58E31CED2E6E00407C98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 516F58E11CED2E6E00407C98 /* LaunchScreen.storyboard */; };
-		516F58EE1CED6BFF00407C98 /* VKSideMenu in Resources */ = {isa = PBXBuildFile; fileRef = 516F58ED1CED6BFF00407C98 /* VKSideMenu */; };
+		51F689761CED6DED006C1F9D /* VKSideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F689751CED6DED006C1F9D /* VKSideMenu.m */; };
 		897CBD3C67A860F466BDA9FF /* libPods-FriendKeeper.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 727ACC0B52984CE290AAF82D /* libPods-FriendKeeper.a */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +29,8 @@
 		516F58DF1CED2E6E00407C98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		516F58E21CED2E6E00407C98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		516F58E41CED2E6E00407C98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		516F58ED1CED6BFF00407C98 /* VKSideMenu */ = {isa = PBXFileReference; lastKnownFileType = folder; path = VKSideMenu; sourceTree = "<group>"; };
+		51F689741CED6DED006C1F9D /* VKSideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKSideMenu.h; sourceTree = "<group>"; };
+		51F689751CED6DED006C1F9D /* VKSideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKSideMenu.m; sourceTree = "<group>"; };
 		5B8B2A82B0F7D39697CD8D9D /* Pods-FriendKeeper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendKeeper.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FriendKeeper/Pods-FriendKeeper.debug.xcconfig"; sourceTree = "<group>"; };
 		727ACC0B52984CE290AAF82D /* libPods-FriendKeeper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FriendKeeper.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -101,9 +102,18 @@
 		516F58EC1CED6BDC00407C98 /* Externals */ = {
 			isa = PBXGroup;
 			children = (
-				516F58ED1CED6BFF00407C98 /* VKSideMenu */,
+				51F689731CED6DD8006C1F9D /* VKSlideMenu */,
 			);
 			name = Externals;
+			sourceTree = "<group>";
+		};
+		51F689731CED6DD8006C1F9D /* VKSlideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				51F689741CED6DED006C1F9D /* VKSideMenu.h */,
+				51F689751CED6DED006C1F9D /* VKSideMenu.m */,
+			);
+			name = VKSlideMenu;
 			sourceTree = "<group>";
 		};
 		CDA8BC16247CF27E9DB7DC2B /* Frameworks */ = {
@@ -175,7 +185,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				516F58E31CED2E6E00407C98 /* LaunchScreen.storyboard in Resources */,
-				516F58EE1CED6BFF00407C98 /* VKSideMenu in Resources */,
 				516F58E01CED2E6E00407C98 /* Assets.xcassets in Resources */,
 				516F58DE1CED2E6E00407C98 /* Main.storyboard in Resources */,
 			);
@@ -238,6 +247,7 @@
 			files = (
 				516F58DB1CED2E6D00407C98 /* ViewController.m in Sources */,
 				516F58D81CED2E6D00407C98 /* AppDelegate.m in Sources */,
+				51F689761CED6DED006C1F9D /* VKSideMenu.m in Sources */,
 				516F58D51CED2E6D00407C98 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

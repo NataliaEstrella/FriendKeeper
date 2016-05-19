@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "VKSideMenu/VKSideMenu.h"
+#import "VKSideMenu.h"
 
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v) ([[[UIDevice currentDevice] systemVersion] compare:(v) options:NSNumericSearch] != NSOrderedAscending)
 
