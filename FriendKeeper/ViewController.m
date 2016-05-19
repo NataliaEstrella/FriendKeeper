@@ -23,6 +23,8 @@
 @property (nonatomic) NSMutableArray *testArray;
 @property (nonatomic) DGActivityIndicatorView *loadingView;
 
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *outerImageCircle;
 
 @end
 
@@ -137,6 +139,7 @@ CNContactStore *store = [[CNContactStore alloc] init];
     
     self.loadingView = activityIndicatorView;
     [self.navigationController setNavigationBarHidden:YES];
+    [self.outerImageCircle setHidden:YES];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self stopLoading];
@@ -151,6 +154,7 @@ CNContactStore *store = [[CNContactStore alloc] init];
 - (void)stopLoading {
 
     [self.loadingView stopAnimating];
+    [self.outerImageCircle setHidden:NO];
     self.loadingView.alpha = 0;
 }
 

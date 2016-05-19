@@ -23,7 +23,7 @@
             </objects>
             <point key="canvasLocation" x="377" y="312"/>
         </scene>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="D8b-C5-2ga">
             <objects>
                 <viewController id="ELH-Kq-kxG" customClass="ViewController" sceneMemberID="viewController">
@@ -34,8 +34,69 @@
                     <view key="view" contentMode="scaleToFill" id="RsN-dB-Wwi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fov-3f-4cx">
+                                <rect key="frame" x="0.0" y="64" width="600" height="200"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="nRR-Li-Umc"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="98n-5i-Sps">
+                                <rect key="frame" x="250" y="84" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.86666666670000003" green="0.29411764709999999" blue="0.22352941179999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="3S9-so-jT2"/>
+                                    <constraint firstAttribute="width" constant="100" id="9Ev-7V-6H4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="50"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GFA-Ks-rGL">
+                                <rect key="frame" x="0.0" y="264" width="600" height="287"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vQD-Eg-h7S">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="tyV-uG-hAP">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="98n-5i-Sps" firstAttribute="top" secondItem="vYf-z5-RyI" secondAttribute="bottom" constant="20" id="0hg-9Y-zRy"/>
+                            <constraint firstItem="GFA-Ks-rGL" firstAttribute="leading" secondItem="RsN-dB-Wwi" secondAttribute="leading" id="22H-lJ-DHt"/>
+                            <constraint firstAttribute="trailing" secondItem="GFA-Ks-rGL" secondAttribute="trailing" id="3co-Wr-ZE1"/>
+                            <constraint firstItem="Fov-3f-4cx" firstAttribute="centerX" secondItem="RsN-dB-Wwi" secondAttribute="centerX" id="MLN-ha-2mh"/>
+                            <constraint firstItem="Fov-3f-4cx" firstAttribute="leading" secondItem="RsN-dB-Wwi" secondAttribute="leading" id="OIn-7g-hdN"/>
+                            <constraint firstItem="Fov-3f-4cx" firstAttribute="centerY" secondItem="RsN-dB-Wwi" secondAttribute="centerY" id="P52-vp-LbK"/>
+                            <constraint firstItem="2J6-mR-Q2x" firstAttribute="top" secondItem="GFA-Ks-rGL" secondAttribute="bottom" id="ju5-gd-PTl"/>
+                            <constraint firstItem="98n-5i-Sps" firstAttribute="centerX" secondItem="Fov-3f-4cx" secondAttribute="centerX" id="qJa-ia-EaP"/>
+                            <constraint firstAttribute="trailing" secondItem="Fov-3f-4cx" secondAttribute="trailing" id="rxa-5N-cLG"/>
+                            <constraint firstItem="Fov-3f-4cx" firstAttribute="top" secondItem="vYf-z5-RyI" secondAttribute="bottom" id="u3y-nq-zev"/>
+                            <constraint firstItem="GFA-Ks-rGL" firstAttribute="top" secondItem="Fov-3f-4cx" secondAttribute="bottom" id="z3p-Yv-JxQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="P52-vp-LbK"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="wz3-8a-jUj"/>
                     <navigationItem key="navigationItem" id="zbJ-EP-xyj">
                         <barButtonItem key="leftBarButtonItem" title="Contacts" style="plain" id="2bk-VB-Xxj">
                             <color key="tintColor" red="0.20784313725490194" green="0.21176470588235294" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,7 +104,15 @@
                                 <action selector="buttonMenuLeft:" destination="ELH-Kq-kxG" id="Kxr-BN-QuI"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="fuA-UG-Zsq">
+                            <color key="tintColor" red="0.20784313730000001" green="0.21176470589999999" blue="0.20392156859999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
                     </navigationItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="outerImageCircle" destination="98n-5i-Sps" id="97j-h5-Rsq"/>
+                        <outlet property="topView" destination="Fov-3f-4cx" id="Crq-Xc-ch7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0P-vA-4WK" sceneMemberID="firstResponder"/>
             </objects>
