@@ -14,7 +14,7 @@
 @interface ViewController () <VKSideMenuDelegate, VKSideMenuDataSource>
 
 @property (nonatomic, strong) VKSideMenu *menuLeft;
-@property (nonatomic, strong) VKSideMenu *menuRight;
+//@property (nonatomic, strong) VKSideMenu *menuRight;
 
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
 
@@ -33,21 +33,8 @@
     self.menuLeft.delegate   = self;
     
     // Init custom right-side menu
-    self.menuRight = [[VKSideMenu alloc] initWithWidth:180 andDirection:VKSideMenuDirectionRightToLeft];
-    self.menuRight.dataSource       = self;
-    self.menuRight.delegate         = self;
-    self.menuRight.textColor        = [UIColor lightTextColor];
-    self.menuRight.enableOverlay    = NO;
-    self.menuRight.hideOnSelection  = NO;
-    self.menuRight.selectionColor   = [UIColor colorWithWhite:.0 alpha:.3];
-    self.menuRight.iconsColor       = nil;
     /* See more options in VKSideMenu.h */
-    
-    if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"8.0"))
-        self.menuRight.blurEffectStyle = UIBlurEffectStyleDark;
-    else
-        self.menuRight.backgroundColor = [UIColor colorWithWhite:0. alpha:0.8];
-    
+        
     // Make stormtrooper image to be cool
     self.avatar.layer.cornerRadius  = self.avatar.frame.size.width * .5;
     self.avatar.layer.masksToBounds = YES;
@@ -60,10 +47,6 @@
     [self.menuLeft show];
 }
 
-- (IBAction)buttonMenuRight:(id)sender
-{
-    [self.menuRight show];
-}
 
 #pragma mark - VKSideMenuDataSource
 
@@ -142,6 +125,7 @@
 
 -(void)sideMenu:(VKSideMenu *)sideMenu didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     NSLog(@"SideMenu didSelectRow: %@", indexPath);
 }
 
