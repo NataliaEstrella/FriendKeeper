@@ -23,8 +23,6 @@
 @property (nonatomic) NSMutableArray *testArray;
 @property (nonatomic) DGActivityIndicatorView *loadingView;
 
-@property (strong, nonatomic) IBOutlet UIImageView *avatar;
-
 
 @end
 
@@ -32,24 +30,15 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
-    [self getContacts];
     [self startLoading];
     self.testArray = [[NSMutableArray alloc] init];
-    
+    [self getContacts];
     
     // Init default left-side menu with custom width
     self.menuLeft = [[VKSideMenu alloc] initWithWidth:220 andDirection:VKSideMenuDirectionLeftToRight];
     self.menuLeft.dataSource = self;
     self.menuLeft.delegate   = self;
     
-    // Init custom right-side menu
-    /* See more options in VKSideMenu.h */
-        
-    // Make stormtrooper image to be cool
-    self.avatar.layer.cornerRadius  = self.avatar.frame.size.width * .5;
-    self.avatar.layer.masksToBounds = YES;
-    self.avatar.layer.borderColor   = [UIColor whiteColor].CGColor;
-    self.avatar.layer.borderWidth   = 5.;
 }
 
 -(IBAction)buttonMenuLeft:(id)sender {
@@ -70,37 +59,18 @@
 }
 
 -(VKSideMenuItem *)sideMenu:(VKSideMenu *)sideMenu itemForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // This solution is provided for DEMO propose only
-    // It's beter to store all items in separate arrays like you do it in your UITableView's. Right?
+   
     VKSideMenuItem *item = [VKSideMenuItem new];
-    
     ContactManager *contactObject = self.testArray[indexPath.row];
-    
     item.title = contactObject.name;
     
     return item;
 }
 
-#pragma mark - VKSideMenuDelegate
-
--(void)sideMenu:(VKSideMenu *)sideMenu didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    NSLog(@"SideMenu didSelectRow: %@", indexPath);
-}
-
--(void)sideMenuDidShow:(VKSideMenu *)sideMenu
-{
-    NSLog(@"%@ VKSideMenue did show", sideMenu == self.menuLeft ? @"LEFT" : @"RIGHT");
-}
-
--(void)sideMenuDidHide:(VKSideMenu *)sideMenu
-{
-    NSLog(@"%@ VKSideMenue did hide", sideMenu == self.menuLeft ? @"LEFT" : @"RIGHT");
-}
 
 
 #pragma mark - Contact API Manager 
-//To be placed eventually in its own manager file
+//To be placed eventually in its own manager file with a data block and completion handler
 
 -(void)getContacts {
     
@@ -148,8 +118,6 @@ CNContactStore *store = [[CNContactStore alloc] init];
 //        NSData *data = contact.imageData;
 //        object.image = data;
         
-
-        
         [self.testArray addObject:object];
     }
 }];
@@ -170,11 +138,13 @@ CNContactStore *store = [[CNContactStore alloc] init];
     self.loadingView = activityIndicatorView;
     [self.navigationController setNavigationBarHidden:YES];
     
-//  self.collectionView.alpha = 0;
-
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self stopLoading];
-        [self.navigationController setNavigationBarHidden:NO];
+        [UIView animateWithDuration:.5
+                         animations:^{
+                             [self.navigationController setNavigationBarHidden:NO];
+                         }];
+        
     });
 }
 
@@ -182,6 +152,23 @@ CNContactStore *store = [[CNContactStore alloc] init];
 
     [self.loadingView stopAnimating];
     self.loadingView.alpha = 0;
+}
+
+#pragma mark - VKSideMenuDelegate
+
+-(void)sideMenu:(VKSideMenu *)sideMenu didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"SideMenu didSelectRow: %@", indexPath);
+}
+
+-(void)sideMenuDidShow:(VKSideMenu *)sideMenu
+{
+    NSLog(@"%@ VKSideMenue did show", sideMenu == self.menuLeft ? @"LEFT" : @"RIGHT");
+}
+
+-(void)sideMenuDidHide:(VKSideMenu *)sideMenu
+{
+    NSLog(@"%@ VKSideMenue did hide", sideMenu == self.menuLeft ? @"LEFT" : @"RIGHT");
 }
 
 
