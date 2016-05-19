@@ -26,9 +26,6 @@
 @property (strong, nonatomic) IBOutlet UIImageView *avatar;
 
 
-
-
-
 @end
 
 @implementation ViewController
@@ -114,9 +111,7 @@ CNContactStore *store = [[CNContactStore alloc] init];
     
     if (!granted) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            // user didn't grant access;
-            // so, again, tell user here why app needs permissions in order  to do it's job;
-            // this is dispatched to the main queue because this request could be running on background thread
+
         });
         return;
     }
@@ -140,20 +135,30 @@ CNContactStore *store = [[CNContactStore alloc] init];
     
     for (CNContact *contact in contacts) {
         ContactManager *object = [[ContactManager alloc] init];
+
+       
+//         NSArray<CNLabeledValue<CNPhoneNumber*>*> *phoneString = contact.phoneNumbers;
+//        object.phoneNumber = phoneString;
+//        NSLog(@"number = %@", phoneString);
         
-        NSString *string = [formatter stringFromContact:contact];
-        object.name = string;
-        NSLog(@"object.name = %@", object.name);
-        NSLog(@"contact = %@", string);
+        NSString *name = [formatter stringFromContact:contact];
+        object.name = name;
+        NSLog(@"contact = %@", name);
+        
+//        NSData *data = contact.imageData;
+//        object.image = data;
+        
+
         
         [self.testArray addObject:object];
     }
 }];
+    
 }
 
 - (void)startLoading {
     
-    DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeTriangleSkewSpin tintColor:[UIColor colorWithRed:105.0/255.0 green:105.0/255.0 blue:105.0/255.0 alpha:1.0]];
+    DGActivityIndicatorView *activityIndicatorView = [[DGActivityIndicatorView alloc] initWithType:DGActivityIndicatorAnimationTypeTriangleSkewSpin tintColor:[UIColor colorWithRed:239.0/255.0 green:29.0/255.0 blue:29.0/255.0 alpha:1.0]];
     CGFloat width = self.view.bounds.size.width / 20.0f;
     CGFloat height = self.view.bounds.size.height / 20.0f;
     
@@ -163,11 +168,13 @@ CNContactStore *store = [[CNContactStore alloc] init];
     [activityIndicatorView setCenter:self.view.center];
     
     self.loadingView = activityIndicatorView;
+    [self.navigationController setNavigationBarHidden:YES];
     
 //  self.collectionView.alpha = 0;
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self stopLoading];
+        [self.navigationController setNavigationBarHidden:NO];
     });
 }
 

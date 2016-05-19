@@ -10,6 +10,7 @@
 
 @interface ContactManager : NSObject
 @property (nonatomic) NSString *name;
-@property (nonatomic) NSString *image;
+//@property (nonatomic)  NSArray *phoneNumber;
+//@property (nonatomic) NSData *image;
 
 @end

@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -35,55 +34,20 @@
                     <view key="view" contentMode="scaleToFill" id="RsN-dB-Wwi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="eiz-wg-b7Z">
-                                <rect key="frame" x="220" y="72" width="160" height="160"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="8im-Az-99v"/>
-                                    <constraint firstAttribute="height" constant="160" id="9L7-rv-YsW"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="560" translatesAutoresizingMaskIntoConstraints="NO" id="xlR-MM-Tif">
-                                <rect key="frame" x="20" y="240" width="560" height="352"/>
-                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis luctus nulla velit, eget pharetra massa tempor at. Morbi nisi felis, mattis ut consectetur at, pulvinar in diam. Vestibulum dolor lectus, eleifend id tellus vitae, vulputate imperdiet urna. Curabitur fermentum felis convallis nunc congue, ac aliquam mauris commodo. Quisque cursus auctor neque. Vestibulum quis est vel dolor luctus consectetur vel sed justo. Sed diam nulla, dapibus at cursus id, blandit eu nisi.
-
-Nullam at feugiat neque. Integer placerat diam at ipsum consequat, ut sollicitudin magna eleifend. Nunc et convallis ligula. Nunc id tellus sed dolor viverra interdum vitae id massa. Vivamus posuere congue diam in auctor. Aenean ut tortor tempus, pretium lectus sit amet, consectetur nibh. Praesent eu consectetur elit. Maecenas eu neque quis diam congue pellentesque et sit amet nunc. Etiam pretium libero sed tellus ullamcorper, id vulputate dui pulvinar. Praesent ultricies ligula eu viverra feugiat. Sed finibus felis varius, consequat nisl a, convallis nibh. Suspendisse feugiat laoreet est, a tempor magna sodales ac. Integer vel feugiat dui. Nam id elit nec elit lacinia efficitur. Vestibulum quis tellus pellentesque, eleifend metus at, malesuada sapien. Donec at libero at mi porta molestie.
-
-Duis eu odio maximus, dignissim nisi viverra, semper ex. Nulla elementum, elit sit amet fermentum vestibulum, elit ipsum pharetra tortor, eu rhoncus velit tellus non nisi. Etiam hendrerit massa tellus, sit amet consequat mi consequat ultrices. Fusce efficitur, neque nec consectetur vestibulum, sem risus pulvinar augue, vitae varius metus libero non ante. Fusce tellus erat, convallis eu nisi ac, accumsan suscipit eros. Integer at felis iaculis, dignissim ligula pellentesque, eleifend ligula. Morbi gravida malesuada est. Proin sollicitudin condimentum blandit. Maecenas euismod et risus quis lacinia. Phasellus est massa, accumsan nec metus id, suscipit rhoncus massa. Integer lectus ligula, ultrices non condimentum et, mollis vel elit. Quisque sit amet cursus est. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In viverra felis augue, sed gravida est tempor vel. Sed in tortor est. Pellentesque dictum odio libero, nec ullamcorper erat euismod sed.
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.94509803920000002" green="0.92941176469999998" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.94901960784313721" green="0.8901960784313725" blue="0.77647058823529413" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="eiz-wg-b7Z" firstAttribute="centerX" secondItem="RsN-dB-Wwi" secondAttribute="centerX" id="2kx-I4-Nql"/>
-                            <constraint firstItem="eiz-wg-b7Z" firstAttribute="top" secondItem="vYf-z5-RyI" secondAttribute="bottom" constant="8" id="6GG-z1-n8R"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xlR-MM-Tif" secondAttribute="trailing" id="URu-na-1ni"/>
-                            <constraint firstItem="2J6-mR-Q2x" firstAttribute="top" secondItem="xlR-MM-Tif" secondAttribute="bottom" constant="8" id="Vfo-o4-WfT"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="xlR-MM-Tif" secondAttribute="leading" id="hGS-PD-XdT"/>
-                            <constraint firstItem="xlR-MM-Tif" firstAttribute="top" secondItem="eiz-wg-b7Z" secondAttribute="bottom" constant="8" id="lIB-sj-3ia"/>
-                        </constraints>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="zbJ-EP-xyj">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="add" id="2bk-VB-Xxj">
+                        <barButtonItem key="leftBarButtonItem" title="Contacts" style="plain" id="2bk-VB-Xxj">
                             <color key="tintColor" red="0.20784313725490194" green="0.21176470588235294" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="buttonMenuLeft:" destination="ELH-Kq-kxG" id="Kxr-BN-QuI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="avatar" destination="eiz-wg-b7Z" id="sVr-rI-8dN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f0P-vA-4WK" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1078" y="312"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="avatar" width="170" height="170"/>
-    </resources>
 </document>
