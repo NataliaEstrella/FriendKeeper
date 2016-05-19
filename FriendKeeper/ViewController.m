@@ -132,7 +132,6 @@ CNContactStore *store = [[CNContactStore alloc] init];
         NSLog(@"error = %@", fetchError);
     }
     
-    // you can now do something with the list of contacts, for example, to show the names
     
     CNContactFormatter *formatter = [[CNContactFormatter alloc] init];
     

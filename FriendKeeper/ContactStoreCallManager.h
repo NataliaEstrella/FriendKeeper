@@ -1,5 +1,5 @@
 //
-//  ContactManager.h
+//  ContactStoreCallManager.h
 //  FriendKeeper
 //
 //  Created by Natalia Estrella on 5/19/16.
@@ -8,8 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ContactManager : NSObject
-@property (nonatomic) NSString *name;
-@property (nonatomic) NSString *image;
+@interface ContactStoreCallManager : NSObject
 
 @end

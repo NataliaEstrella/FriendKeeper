@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		512F23151CED966800A8195A /* ContactStoreCallManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 512F23141CED966800A8195A /* ContactStoreCallManager.m */; };
 		516F58D51CED2E6D00407C98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F58D41CED2E6D00407C98 /* main.m */; };
 		516F58D81CED2E6D00407C98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F58D71CED2E6D00407C98 /* AppDelegate.m */; };
 		516F58DB1CED2E6D00407C98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 516F58DA1CED2E6D00407C98 /* ViewController.m */; };
@@ -20,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		1640453C0A121AB4DA8862DA /* Pods-FriendKeeper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FriendKeeper.release.xcconfig"; path = "Pods/Target Support Files/Pods-FriendKeeper/Pods-FriendKeeper.release.xcconfig"; sourceTree = "<group>"; };
+		512F23131CED966800A8195A /* ContactStoreCallManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactStoreCallManager.h; sourceTree = "<group>"; };
+		512F23141CED966800A8195A /* ContactStoreCallManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactStoreCallManager.m; sourceTree = "<group>"; };
 		516F58D01CED2E6D00407C98 /* FriendKeeper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FriendKeeper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		516F58D41CED2E6D00407C98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		516F58D61CED2E6D00407C98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +90,8 @@
 				516F58DA1CED2E6D00407C98 /* ViewController.m */,
 				51F689851CED8EC2006C1F9D /* ContactManager.h */,
 				51F689861CED8EC2006C1F9D /* ContactManager.m */,
+				512F23131CED966800A8195A /* ContactStoreCallManager.h */,
+				512F23141CED966800A8195A /* ContactStoreCallManager.m */,
 				516F58DC1CED2E6E00407C98 /* Main.storyboard */,
 				516F58DF1CED2E6E00407C98 /* Assets.xcassets */,
 				516F58E11CED2E6E00407C98 /* LaunchScreen.storyboard */,
@@ -252,6 +257,7 @@
 			files = (
 				51F689871CED8EC3006C1F9D /* ContactManager.m in Sources */,
 				516F58DB1CED2E6D00407C98 /* ViewController.m in Sources */,
+				512F23151CED966800A8195A /* ContactStoreCallManager.m in Sources */,
 				516F58D81CED2E6D00407C98 /* AppDelegate.m in Sources */,
 				51F689761CED6DED006C1F9D /* VKSideMenu.m in Sources */,
 				516F58D51CED2E6D00407C98 /* main.m in Sources */,
